@@ -23,7 +23,7 @@ float compute(float u,float v)
 
 }
 class DerivProduct extends MultiCalcul{
-    float res;
+
     DerivProduct()
     {
         super();
@@ -38,12 +38,12 @@ class DerivProduct extends MultiCalcul{
         res= u*v;
         return res;
     }
-    void afficher(){
+    void show(){
         System.out.print(a+"*"+b+"=");
     }
 }
 class DerivSomme extends MultiCalcul{
-    float res;
+
     DerivSomme(){
         super();
     }
@@ -53,24 +53,24 @@ class DerivSomme extends MultiCalcul{
     }
     float compute(float u,float v){
         super.compute(u,v);
-        float res;
-        res= u+v;
-        return res;
+
+        result= u+v;
+        return result;
     }
-    void afficher(){
+    void show(){
         System.out.print(a+"+"+b+"=");
     }
 }
 public class Res {
     public static void main(String[] args) {
-        float res=0;
+     float result;
         MultiCalcul point[] = new MultiCalcul[2];
-        point[0] = new DerivProduit(4,3);
+        point[0] = new DerivProduct(4,3);
         point[1]= new DerivSomme(4,3);
     for(int i=0 ;i<2;i++) {
-    res = point[i].calculer(4,3);
-    point[i].afficher();
-    System.out.println(res);
+    result = point[i].compute(4,3);
+    point[i].show();
+    System.out.println(result);
      }
 
 
