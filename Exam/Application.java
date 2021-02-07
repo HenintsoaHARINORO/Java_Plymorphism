@@ -1,24 +1,24 @@
-class DeuxPortes
+class TwoGates
 {
     protected  int e1 , e2;
     protected int s;
-    DeuxPortes(){
+    TwoGates(){
         e1=0;
         e2=0;
     }
-    DeuxPortes(int u,int v){
+    TwoGates(int u,int v){
         e1=u;
         e2=v;
     }
-    void afficher(){
+    void show(){
 
     }
-    void modifier(int u,int v){
+    void change(int u,int v){
         e1=u;
         e2=v;
 
     }
-    public int getSortie(){
+    public int getOutput(){
         return s;
 
     }
@@ -27,41 +27,41 @@ class DeuxPortes
         return str;
     }
 }
-class PorteEt extends DeuxPortes{
-    PorteEt(){
+class AndGate extends TwoGates{
+    AndGate(){
         super();
         s=0;
     }
-    PorteEt(int u,int v){
+    AndGate(int u,int v){
         super(u,v);
         s=e1 & e2;
     }
 
     @Override
-    void afficher() {
-        System.out.println("Porte ET\t e2="+e2+"e1="+e1+"s="+s);
+    void show() {
+        System.out.println("Gate AND");
     }
-    void modifier(int u,int v){
-        super.modifier(u,v);
+    void change(int u,int v){
+        super.change(u,v);
         s=e1 &e2;
     }
 }
-class PorteOu extends DeuxPortes{
-    PorteOu(){
+class OrGate extends TwoGates{
+    OrGate(){
         super();
         s=0;
     }
-    PorteOu(int u,int v){
+    OrGate(int u,int v){
         super(u,v);
         s=e1 | e2;
     }
 
     @Override
-    void afficher() {
-        System.out.println("Porte OU"+" e2="+e2+"e1="+e1+"s="+s);
+    void show() {
+        System.out.println("Gate OR");
     }
-    void modifier(int u,int v){
-        super.modifier(u,v);
+    void change(int u,int v){
+        super.change(u,v);
         s=e1 | e2;
     }
 }
@@ -69,14 +69,14 @@ public class Application {
     public static void main(String [] args){
         int e1[]={0,1,0,1};
         int e2[]={0,0,1,1};
-        DeuxPortes porte[]= new DeuxPortes[2];
-        porte[0]=new PorteEt();
-        porte[1]= new PorteOu();
+        TwoGates porte[]= new TwoGates[2];
+        porte[0]=new AndGate();
+        porte[1]= new OrGate();
         for (int i=0;i<2;i++){
-            porte[i].afficher();
+            porte[i].show();
             for (int j=0;j<4;j++){
 
-                porte[i].modifier(e1[j],e2[j]);
+                porte[i].change(e1[j],e2[j]);
                 System.out.println(porte[i]);
             }
             System.out.println("\n");
